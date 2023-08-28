@@ -7,7 +7,7 @@ sysplus = require("sysplus")
 
 --spi编号和CS管脚，请按实际情况修改
 local spiId = 0
-local cs = 14
+local cs = 20
 local cspin = gpio.setup(cs, 1)
 
 --收发数据
@@ -21,7 +21,8 @@ local function sendRecv(data,len)
 end
 
 local function Task()
-    log.info("Main Task", "RN8302B")
+
+    log.info("Main Task",rtos.bsp(), "RN8302B")
 
     local result = spi.setup(spiId,cs,0,0,8,100000)
     print("open SPI",result)
